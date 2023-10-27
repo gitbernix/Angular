@@ -7,3 +7,20 @@
 header {
   background-color: #ff7518;
 }
+
+.nameInput,
+.firstButton {
+  background-color: #ff7518;
+}
+
+.answerField {
+  background-color: black;
+  color: white;
+}
+
+.answers {
+  color: #ff7518;
+  background-color: gray;
+  padding: 30px;
+  font-size: 2rem;
+}

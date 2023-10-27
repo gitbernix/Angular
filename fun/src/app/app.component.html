@@ -1,4 +1,29 @@
 <header class="container-fluid">
-  <h1 class="text-center p-4">Szia!</h1>
+  <h1 class="text-center p-4">Helló{{ userName }}!</h1>
   <p class="text-center p-3">Szeretnéd megtudni a Halloweeni neved?</p>
 </header>
+
+<main>
+  <div class="nameInput p-3 h-25">
+    <input
+      (keyup)="(userName)"
+      type="text"
+      class="form-control w-25 m-auto"
+      placeholder="Írd be a keresztneved!"
+    />
+  </div>
+
+  <div class="firstButton text-center p-3 h-25">
+    <button (click)="getAllFunctions()" type="button" class="btn btn-dark p-1">
+      Mutasd meg ki vagyok!
+    </button>
+  </div>
+
+  <div class="answerField text-center p-3 h-25">
+    <p class="answers">
+      {{ halloweenName }} {{ halloweenName2 }} {{ country }}
+    </p>
+  </div>
+</main>
+
+<footer class="icons h-25"></footer>
