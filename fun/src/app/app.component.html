@@ -1,29 +1,63 @@
 <header class="container-fluid">
-  <h1 class="text-center p-4">Helló{{ userName }}!</h1>
-  <p class="text-center p-3">Szeretnéd megtudni a Halloweeni neved?</p>
+  <h1 class="text-center p-3">Helló!</h1>
+
+  <p class="text-center p-3">
+    Szeretnéd megtudni, hogy ki vagy és honnan jöttél?
+  </p>
 </header>
 
 <main>
-  <div class="nameInput p-3 h-25">
+  <div class="nameInput p-1">
     <input
-      (keyup)="(userName)"
+      (input)="setWelcomeText()"
       type="text"
       class="form-control w-25 m-auto"
       placeholder="Írd be a keresztneved!"
+      #userNameInput
     />
   </div>
 
-  <div class="firstButton text-center p-3 h-25">
+  <div
+    class="answerField text-center p-3 d-flex justify-content-center align-items-center"
+  >
+    <p>{{ welcomeText }}</p>
+  </div>
+
+  <div
+    class="firstButton text-center p-1 d-flex justify-content-center align-items-center"
+  >
     <button (click)="getAllFunctions()" type="button" class="btn btn-dark p-1">
-      Mutasd meg ki vagyok!
+      Kattints, hogy megtudd az igazságot!
     </button>
   </div>
 
-  <div class="answerField text-center p-3 h-25">
-    <p class="answers">
+  <div>
+    <p class="answers d-flex justify-content-center align-items-center">
       {{ halloweenName }} {{ halloweenName2 }} {{ country }}
     </p>
   </div>
 </main>
 
-<footer class="icons h-25"></footer>
+<footer>
+  <!-- <fa-icon [icon]="faGhost"></fa-icon> -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="bi bi-emoji-smile-fill"
+    viewBox="0 0 16 16"
+  >
+    <path
+      d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"
+    />
+  </svg>
+
+  <div
+    class="secondButton text-center p-1 d-flex justify-content-center align-items-center"
+  >
+    <button (click)="clear()" type="button" class="btn btn-dark p-1">
+      Törölj mindent!
+    </button>
+  </div>
+</footer>

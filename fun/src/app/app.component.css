@@ -6,21 +6,40 @@
 
 header {
   background-color: #ff7518;
+  height: 15vh;
 }
 
-.nameInput,
-.firstButton {
+footer {
+  height: 25vh;
   background-color: #ff7518;
+}
+
+.nameInput {
+  background-color: #ff7518;
+  height: 5vh;
+}
+
+.firstButton {
+  background-color: black;
+  height: 10vh;
 }
 
 .answerField {
   background-color: black;
   color: white;
+  height: 20vh;
+  font-size: 2rem;
 }
 
 .answers {
   color: #ff7518;
-  background-color: gray;
-  padding: 30px;
-  font-size: 2rem;
+  background-color: black;
+  height: 20vh;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.secondButton {
+  background-color: #ff7518;
+  height: 10vh;
 }

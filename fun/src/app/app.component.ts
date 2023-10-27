@@ -1,4 +1,22 @@
-import { Component } from '@angular/core';
+import { NONE_TYPE } from '@angular/compiler';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+// import { AppComponent } from './app.component';
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { faGhost } from '@fortawesome/free-solid-svg-icons';
+// import { Component } from '@angular/core';
+
+// @Component({
+//   selector: 'app-root',
+//   templateUrl: './app.component.html',
+// })
+// @NgModule({
+//   imports: [BrowserModule, FontAwesomeModule],
+//   declarations: [AppComponent],
+//   bootstrap: [AppComponent],
+// })
+export class AppModule {}
 
 @Component({
   selector: 'app-root',
@@ -6,10 +24,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  // ghostIcon = faGhost;
   title = 'fun';
-  // public currentUser: string = '';
-  // public isUserSet: boolean = false;
-  public userName: string = '';
+  @ViewChild('userNameInput', { static: false }) userNameInput:
+    | ElementRef
+    | undefined;
+
+  public welcomeText: string = '';
   public answer: string = '';
   public halloweenName: string = '';
   public halloweenName2: string = '';
@@ -55,54 +76,107 @@ export class AppComponent {
     'Pajzán',
     'Kísértetképző',
   ];
-  public halloweenNames2: string[] = ['Csiga'];
+  public halloweenNames2: string[] = [
+    'Zabhegyező',
+    'Cicus',
+    'Lufi',
+    'Malacka',
+    'Zsiráf',
+    'Borsó',
+    'Kutya',
+    'Rebarbara',
+    'Cimbora',
+    'Málna',
+    'Zolika',
+    'Gyöngy',
+    'Pocak',
+    'Zokni',
+    'Csoki',
+    'Rücsi',
+    'Gombóc',
+    'Füles',
+    'Mazsola',
+    'Kapitány',
+    'Körte',
+    'Cirmos',
+    'Macska',
+    'Makk',
+    'Zsinórka',
+    'Málnás',
+    'Zöldike',
+    'Zubaba',
+    'Guriga',
+    'Pom-pom',
+    'Rücsköcske',
+    'Fickó',
+    'Kakukk',
+    'Csavargó',
+    'Makkarc',
+    'Csibész',
+  ];
   public country: string = '';
-  public countries: string[] = ['Nigériából', 'Tanzániából'];
+  public countries: string[] = [
+    'Nigériából',
+    'Tanzániából',
+    'Mauritániából',
+    'Burundiból',
+    'Szváziföldről',
+    'Szomáliából',
+    'Kongóból',
+    'Szudánból',
+    'Ruandából',
+    'Dzsibutiból',
+    'Kamerunból',
+    'Szenegálból',
+    'Hollandiából',
+    'Guineából',
+    'Seychelle-szigetekről',
+    'Litvániából',
+    'Szváziföldről',
+    'Comore-szigetekről',
+    'Gabonból',
+    'Gambiából',
+    'Közép-afrikai Köztársaságból',
+    'Szenegálból',
+    'Peruból',
+  ];
 
-  // setUsername(value: string): void {
-  //   if (value) {
-  //     this.isUserSet = true;
-  //     this.currentUser = value;
-  //   } else {
-  //     this.isUserSet = false;
-  //     this.currentUser = 'Ejnye, miért nem adtad meg a neved?';
-  //   }
-  // }
-
-  getWelcomeAnswer(): string {
-    return `Kedves {{currentUser}}, a te halloweeni neved:`;
+  setWelcomeText(): void {
+    if (this.userNameInput) {
+      this.welcomeText = `Kedves ${this.userNameInput.nativeElement.value}, a te halloweeni neved:`;
+    }
   }
 
   getHalloweenName(): void {
-    let randomIndex: number = Math.floor(
+    const randomIndex: number = Math.floor(
       Math.random() * this.halloweenNames.length
     );
-    while (this.halloweenNames.indexOf(this.halloweenName) === randomIndex) {
-      randomIndex = Math.floor(Math.random() * this.halloweenNames.length);
-    }
     this.halloweenName = this.halloweenNames[randomIndex];
   }
 
   getHalloweenName2(): void {
-    let randomIndex: number = Math.floor(
+    const randomIndex: number = Math.floor(
       Math.random() * this.halloweenNames2.length
     );
-    while (this.halloweenNames2.indexOf(this.halloweenName2) === randomIndex) {
-      randomIndex = Math.floor(Math.random() * this.halloweenNames2.length);
-    }
     this.halloweenName2 = this.halloweenNames2[randomIndex];
   }
 
   getCountry(): void {
-    let randomIndex: number = Math.floor(Math.random() * this.countries.length);
-    while (this.countries.indexOf(this.country) === randomIndex) {
-      randomIndex = Math.floor(Math.random() * this.countries.length);
-    }
+    const randomIndex: number = Math.floor(
+      Math.random() * this.countries.length
+    );
     this.country = this.countries[randomIndex];
   }
 
+  clear(): void {
+    this.welcomeText = '';
+    this.halloweenName = '';
+    this.halloweenName2 = '';
+    this.country = '';
+  }
+
   getAllFunctions(): void {
-    this.getWelcomeAnswer();
+    this.setWelcomeText();
     this.getHalloweenName();
     this.getHalloweenName2();
     this.getCountry();
